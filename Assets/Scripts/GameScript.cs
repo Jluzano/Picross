@@ -68,7 +68,7 @@ public class Nonogram : MonoBehaviour
             for (int col = 0; col < gridSize; col++)
             {
                 var cell = grid.transform.GetChild(row * gridSize + col).GetComponent<Cell>();
-                
+
                 // Set the cell state based on the solution array
                 if (cell.state != solutionArray[row, col])
                 {
