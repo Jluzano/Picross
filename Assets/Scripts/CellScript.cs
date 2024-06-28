@@ -9,6 +9,7 @@ public class Cell : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDrag
     public Sprite regularTile;
     public Sprite grayXTile;
     public Sprite blueTile;
+    public AudioSource pop;
 
     public int state = 0;
     // State 0 = Blank
@@ -23,6 +24,7 @@ public class Cell : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDrag
 
     private void Start()
     {
+        pop = GetComponent<AudioSource>();
         tile = GetComponent<Image>();
         nonogramScript = FindObjectOfType<Nonogram>();
     }
@@ -86,11 +88,13 @@ public class Cell : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDrag
             {
                 tile.sprite = blueTile;
                 this.state = 1;
+                pop.Play();
             }
             else if (this.state == 1)
             {
                 tile.sprite = regularTile;
                 this.state = 0;
+                pop.Play();
             }
         }
         else
@@ -99,11 +103,13 @@ public class Cell : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDrag
             {
                 tile.sprite = grayXTile;
                 this.state = 2;
+                pop.Play();
             }
             else if (this.state == 2)
             {
                 tile.sprite = regularTile;
                 this.state = 0;
+                pop.Play();
             }
         }
 

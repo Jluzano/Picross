@@ -8,6 +8,7 @@ public class Nonogram : MonoBehaviour
 {
     public GameObject cellPrefab;
     public GameObject grid;
+    public GameObject winText;
 
     private int gridSize = 5; //size of the grid
     private float cellSpacing = 1.1f; //cell spacing
@@ -35,7 +36,7 @@ public class Nonogram : MonoBehaviour
         // Initialize the grid visually
         InitializeGrid();
         //Solve the grid
-        Solve();
+        //Solve();
     }
 
     void InitializeGrid()
@@ -60,6 +61,7 @@ public class Nonogram : MonoBehaviour
             }
         }
     }
+    /*
     void Solve()
     {
         //looping through 2d array named gridArray
@@ -79,7 +81,7 @@ public class Nonogram : MonoBehaviour
             }
         }
     }
-
+    */
     void UpdateGridArray()
     {
         //Updating the 2d array to be compared with the solution
@@ -104,7 +106,7 @@ public class Nonogram : MonoBehaviour
             for (int col = 0; col < gridSize; col++)
             {
                 // Ignore cells with state 2 (X)
-                if (gridArray[row, col] == 2)
+                if ((gridArray[row, col] == 2) && (solutionArray[row, col] == 0))
                 {
                     continue;
                 }
@@ -121,6 +123,7 @@ public class Nonogram : MonoBehaviour
         if (isCorrect)
         {
             Debug.Log("Finished!");
+            winText.SetActive(true);
         }
         else
         {
